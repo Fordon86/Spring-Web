@@ -22,8 +22,8 @@ goto fail
 
 :runtomcat
 call %CATALINA_HOME%\bin\startup.bat
-call "C:\Program Files\Mozilla Firefox\firefox.exe http://localhost:8080/crud/v1/task/getTasks"
-URL http://localhost:8080/crud/v1/task/getTasks
+start firefox http://localhost:8080/crud/v1/task/getTasks
+
 goto end
 
 :fail
