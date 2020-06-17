@@ -23,7 +23,6 @@ public class TrelloController {
     }
 
 /*    public void getTrelloBoards() {
-
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
         trelloBoards.stream()
@@ -37,7 +36,6 @@ public class TrelloController {
                                     System.out.println(trelloList.getName() + " - " + trelloList.getId() +
                                             " - " + trelloList.getIsClosed()));
                         });
-
     }*/
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
