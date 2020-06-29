@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
+import static java.util.Optional.ofNullable;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 
@@ -27,7 +28,8 @@ public class SimpleEmailServiceTest {
         Mail mail = new Mail("test@test.com",null, "Test", "Test message");
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
-        //mailMessage.setCc(mail.getSetCc());
+        ofNullable(mailMessage.getCc()).ifPresent(mailCc -> mailMessage.setCc(mail.getToCc()));
+        //ofNullable(mailMessage.setCc()).isPresent(mailMessage.setCc(mail.getToCc()));
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
 
@@ -36,7 +38,6 @@ public class SimpleEmailServiceTest {
 
         //Then
         verify(javaMailSender, times(1)).send(mailMessage);
-
     }
 
 }
